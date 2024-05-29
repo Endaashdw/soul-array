@@ -17,7 +17,8 @@ import java.io.IOException;
 public class soulArray {
 
     JFrame window;
-    JPanel titleNamePanel, startButtonPanel, mainTextPanel, storyContinuePanel, menuPanel, menuButton, coinsPanel, goBackToMainPanel, userHpLabel, oppHpLabel, bodyTextPanel, fighPassPanel, turnPanel, elementalPanel;
+    JPanel titleNamePanel, startButtonPanel, mainTextPanel, storyContinuePanel, menuPanel, menuButton, coinsPanel,
+            goBackToMainPanel, userHpLabel, oppHpLabel, bodyTextPanel, fighPassPanel, turnPanel, elementalPanel;
     JLabel titleTextLabel, menuTitle, coinsText, userHp, oppHp, turnText;
     private static final String coinsPath = "coinsTrack.csv";
     Font titleFont = new Font("Times New Roman", Font.PLAIN, 90);
@@ -26,24 +27,25 @@ public class soulArray {
     JButton startButton, storyButton, buy, sell, play, quit, goBackToMainB, fight, pass, cont;
     JTextArea mainTextArea, messageTextArea, bodyTextArea, elementalArea;
 
-    //organs
+    // organs
     JPanel organsButtons;
     JButton brain, guts, hands, heart, legs, eyes, lungs, kidney, teeth, skin;
 
     // horses
     JPanel horses;
     JButton CERBERUS, PERSEPHONE, HADES, VOSKOPOULOS, TOM;
-    final String[] selectedHorse = {""};
+    final String[] selectedHorse = { "" };
     private int[] betAmount = new int[1];
     // horse racing panels
     JLabel hrTitle, hrSubtitle, hrEnterBet, hrInputLabel, winnerLabel, theWinnerIsLabel, losingScreenLabel;
-    JPanel hrTitlePanel, hrSubPanel, hrBetPanel, hrInputPanel, horsePodiumPanel, otherHorsesPanel, theWinnerIsPanel, losingScreenPanel;
+    JPanel hrTitlePanel, hrSubPanel, hrBetPanel, hrInputPanel, horsePodiumPanel, otherHorsesPanel, theWinnerIsPanel,
+            losingScreenPanel;
     JTextField hrInputField;
     JButton hrInputButton;
 
     // rps elements
     JButton fire, water, earth;
-    //games
+    // games
     JLabel choice;
     JPanel gamesButtons;
     JButton danceWdevilB, horseRacingB, rockPaperScissorsB;
@@ -64,8 +66,8 @@ public class soulArray {
     ArrayList<Integer> mainArrayPrice = new ArrayList<>(Arrays.asList(2000, 1800, 1500, 3500, 2300));
     ArrayList<Integer> sellArrayPrice = new ArrayList<>(Arrays.asList(800, 1250, 1000, 750, 900));
 
-    //dance with the dimonyo variables
-    private int coins = 50;
+    // dance with the dimonyo variables
+    private int coins = 100;
     private boolean playerTurn = true;
     private boolean hasChosen = false;
     private int userDmg = 100;
@@ -79,11 +81,11 @@ public class soulArray {
     ArrayList<String> boughtOrgans = new ArrayList<>();
     ArrayList<String> soldOrgans = new ArrayList<>();
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         new soulArray();
     }
 
-    public soulArray(){
+    public soulArray() {
         try (BufferedReader reader = new BufferedReader(new FileReader(coinsPath))) {
             coins = Integer.parseInt(reader.readLine());
         } catch (IOException e) {
@@ -120,7 +122,7 @@ public class soulArray {
         window.add(titleNamePanel);
         window.add(startButtonPanel);
 
-        //go back to main menu button
+        // go back to main menu button
         goBackToMainPanel = new JPanel();
         goBackToMainPanel.setBounds(10, 10, 100, 50);
         goBackToMainPanel.setBackground(Color.black);
@@ -137,8 +139,8 @@ public class soulArray {
         window.setVisible(true);
     }
 
-    public void storyScreen(){
-        
+    public void storyScreen() {
+
         titleNamePanel.setVisible(false);
         startButtonPanel.setVisible(false);
 
@@ -148,7 +150,7 @@ public class soulArray {
         mainTextPanel.setLayout(new BorderLayout());
         window.add(mainTextPanel);
 
-        mainTextArea = new JTextArea("You've sold your soul to me");
+        mainTextArea = new JTextArea("We made a deal remember?");
         mainTextArea.setBackground(Color.black);
         mainTextArea.setForeground(Color.white);
         mainTextArea.setFont(normalFont);
@@ -165,8 +167,8 @@ public class soulArray {
         storyContinuePanel = new JPanel();
         storyContinuePanel.setBounds(225, 350, 300, 150);
         storyContinuePanel.setBackground(Color.black);
-        window.add(storyContinuePanel); 
-    
+        window.add(storyContinuePanel);
+
         storyButton = new JButton("continue");
         storyButton.setBackground(Color.black);
         storyButton.setForeground(Color.white);
@@ -176,28 +178,48 @@ public class soulArray {
         storyContinuePanel.add(storyButton);
     }
 
-    public void mainMenu(){
-        if (storyContinuePanel != null) storyContinuePanel.setVisible(false);
-        if (mainTextPanel != null) mainTextPanel.setVisible(false);
-        if (coinsPanel != null) coinsPanel.setVisible(false);
-        if (organsButtons != null) organsButtons.setVisible(false);
-        if (gamesButtons != null) gamesButtons.setVisible(false);
-        if (userHpLabel != null) userHpLabel.setVisible(false);
-        if (oppHpLabel != null) oppHpLabel.setVisible(false);
-        if (bodyTextPanel != null)bodyTextPanel.setVisible(false);
-        if (fighPassPanel != null) fighPassPanel.setVisible(false);
-        if (turnPanel != null) turnPanel.setVisible(false);
-        if (hrTitlePanel != null) hrTitlePanel.setVisible(false);
-        if (hrSubPanel != null) hrSubPanel.setVisible(false);
-        if (hrBetPanel != null) hrBetPanel.setVisible(false);
-        if (horses != null) horses.setVisible(false);
-        if (hrInputPanel != null) hrInputPanel.setVisible(false);
-        if (horsePodiumPanel != null) horsePodiumPanel.setVisible(false);
-        if (otherHorsesPanel != null) otherHorsesPanel.setVisible(false);
-        if(choice != null) choice.setVisible(false);
-        if(elementalPanel != null) elementalPanel.setVisible(false);
+    public void mainMenu() {
+        if (storyContinuePanel != null)
+            storyContinuePanel.setVisible(false);
+        if (mainTextPanel != null)
+            mainTextPanel.setVisible(false);
+        if (coinsPanel != null)
+            coinsPanel.setVisible(false);
+        if (organsButtons != null)
+            organsButtons.setVisible(false);
+        if (gamesButtons != null)
+            gamesButtons.setVisible(false);
+        if (userHpLabel != null)
+            userHpLabel.setVisible(false);
+        if (oppHpLabel != null)
+            oppHpLabel.setVisible(false);
+        if (bodyTextPanel != null)
+            bodyTextPanel.setVisible(false);
+        if (fighPassPanel != null)
+            fighPassPanel.setVisible(false);
+        if (turnPanel != null)
+            turnPanel.setVisible(false);
+        if (hrTitlePanel != null)
+            hrTitlePanel.setVisible(false);
+        if (hrSubPanel != null)
+            hrSubPanel.setVisible(false);
+        if (hrBetPanel != null)
+            hrBetPanel.setVisible(false);
+        if (horses != null)
+            horses.setVisible(false);
+        if (hrInputPanel != null)
+            hrInputPanel.setVisible(false);
+        if (horsePodiumPanel != null)
+            horsePodiumPanel.setVisible(false);
+        if (otherHorsesPanel != null)
+            otherHorsesPanel.setVisible(false);
+        if (choice != null)
+            choice.setVisible(false);
+        if (elementalPanel != null)
+            elementalPanel.setVisible(false);
 
-        if (messageTextArea != null) messageTextArea.setText("");
+        if (messageTextArea != null)
+            messageTextArea.setText("");
 
         menuPanel = new JPanel();
         menuPanel.setBounds(100, 100, 600, 150);
@@ -213,8 +235,8 @@ public class soulArray {
         menuButton.setBounds(250, 350, 300, 150);
         menuButton.setBackground(Color.black);
         menuButton.setLayout(new GridLayout(2, 2));
-        window.add(menuButton); 
-    
+        window.add(menuButton);
+
         play = new JButton("Play");
         play.setBackground(Color.black);
         play.setForeground(Color.green);
@@ -251,11 +273,13 @@ public class soulArray {
         goBackToMainPanel.setVisible(false);
     }
 
-    public void games(){
+    public void games() {
         goBackToMainPanel.setVisible(true);
-        if (menuPanel != null) menuPanel.setVisible(false);
-        if (menuButton != null) menuButton.setVisible(false);
-        
+        if (menuPanel != null)
+            menuPanel.setVisible(false);
+        if (menuButton != null)
+            menuButton.setVisible(false);
+
         mainTextPanel.setVisible(true);
         mainTextArea.setText("Which game do you want to play?");
 
@@ -288,223 +312,227 @@ public class soulArray {
 
     }
 
-    public void danceWdevil(){
+    public void danceWdevil() {
         playerTurn = true;
         hasChosen = false;
         userDmg = 100;
         comDmg = 50;
         userHpAmount = 1000;
         oppHpAmount = 1000;
-        if (gamesButtons != null) gamesButtons.setVisible(false);
-        if (menuButton != null) menuButton.setVisible(false);
-        if (mainTextPanel != null) mainTextPanel.setVisible(false);
-        if(coins < 2000){
+        if (gamesButtons != null)
+            gamesButtons.setVisible(false);
+        if (menuButton != null)
+            menuButton.setVisible(false);
+        if (mainTextPanel != null)
+            mainTextPanel.setVisible(false);
+        if (coins < 2000) {
             mainTextPanel.setVisible(true);
             mainTextArea.setText("Not enough coins.\nYou need 2000 coins \nto play this.");
-        } else{
+        } else {
 
-        coinsPanel.setBounds(270, 80, 200, 50);
+            coinsPanel.setBounds(270, 80, 200, 50);
 
-        userHpLabel = new JPanel();
-        userHpLabel.setBounds(20, 120, 250, 50);
-        userHpLabel.setBackground(Color.green);
+            userHpLabel = new JPanel();
+            userHpLabel.setBounds(20, 120, 250, 50);
+            userHpLabel.setBackground(Color.green);
 
-        userHp = new JLabel("Your HP: " + userHpAmount);
-        userHp.setForeground(Color.white);
-        userHp.setFont(normalFont);
+            userHp = new JLabel("Your HP: " + userHpAmount);
+            userHp.setForeground(Color.white);
+            userHp.setFont(normalFont);
 
-        userHpLabel.add(userHp);
-        window.add(userHpLabel);
+            userHpLabel.add(userHp);
+            window.add(userHpLabel);
 
-        oppHpLabel = new JPanel();
-        oppHpLabel.setBounds(500, 120, 250, 50);
-        oppHpLabel.setBackground(Color.red);
+            oppHpLabel = new JPanel();
+            oppHpLabel.setBounds(500, 120, 250, 50);
+            oppHpLabel.setBackground(Color.red);
 
-        oppHp = new JLabel("Devil's HP: " + oppHpAmount);
-        oppHp.setForeground(Color.white);
-        oppHp.setFont(normalFont);
+            oppHp = new JLabel("Devil's HP: " + oppHpAmount);
+            oppHp.setForeground(Color.white);
+            oppHp.setFont(normalFont);
 
-        oppHpLabel.add(oppHp);
-        window.add(oppHpLabel);
+            oppHpLabel.add(oppHp);
+            window.add(oppHpLabel);
 
-        turnPanel = new JPanel();
-        turnPanel.setBounds(280, 170, 200, 50);
-        turnPanel.setBackground(Color.black);
+            turnPanel = new JPanel();
+            turnPanel.setBounds(280, 170, 200, 50);
+            turnPanel.setBackground(Color.black);
 
-        String userTurn = "Your turn";
+            String userTurn = "Your turn";
 
-        turnText = new JLabel(userTurn);
-        turnText.setForeground(Color.red);
-        turnText.setFont(normalFont);
+            turnText = new JLabel(userTurn);
+            turnText.setForeground(Color.red);
+            turnText.setFont(normalFont);
 
-        turnPanel.add(turnText);
-        window.add(turnPanel);
+            turnPanel.add(turnText);
+            window.add(turnPanel);
 
-        bodyTextPanel = new JPanel();
-        bodyTextPanel.setBounds(20, 250, 730, 170);
-        bodyTextPanel.setBackground(Color.red);
-        bodyTextPanel.setLayout(new BorderLayout());
-        window.add(bodyTextPanel);
+            bodyTextPanel = new JPanel();
+            bodyTextPanel.setBounds(20, 250, 730, 170);
+            bodyTextPanel.setBackground(Color.red);
+            bodyTextPanel.setLayout(new BorderLayout());
+            window.add(bodyTextPanel);
 
-        bodyTextArea = new JTextArea("Welcome to Dance with the Devil");
-        bodyTextArea.setBackground(Color.black);
-        bodyTextArea.setForeground(Color.white);
-        bodyTextArea.setFont(normalFont);
-        bodyTextArea.setLineWrap(true);
-        bodyTextPanel.add(bodyTextArea, BorderLayout.CENTER);
-        
-        fighPassPanel = new JPanel();
-        fighPassPanel.setBounds(150, 450, 500, 50);
-        fighPassPanel.setBackground(Color.pink);
-        fighPassPanel.setLayout(new GridLayout(1, 3));
+            bodyTextArea = new JTextArea("Welcome to Dance with the Devil");
+            bodyTextArea.setBackground(Color.black);
+            bodyTextArea.setForeground(Color.white);
+            bodyTextArea.setFont(normalFont);
+            bodyTextArea.setLineWrap(true);
+            bodyTextPanel.add(bodyTextArea, BorderLayout.CENTER);
 
-        JButton fight = new JButton("FIGHT");
-        fight.setBackground(Color.green);
-        fight.setForeground(Color.white);
-        fight.setFont(normalFont);
-        fight.setFocusPainted(false);
+            fighPassPanel = new JPanel();
+            fighPassPanel.setBounds(150, 450, 500, 50);
+            fighPassPanel.setBackground(Color.pink);
+            fighPassPanel.setLayout(new GridLayout(1, 3));
 
-        try {
-            Image img = ImageIO.read(getClass().getResource("img/fight.png"));
-            fight.setIcon(new ImageIcon(img));
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-        
+            JButton fight = new JButton("FIGHT");
+            fight.setBackground(Color.green);
+            fight.setForeground(Color.white);
+            fight.setFont(normalFont);
+            fight.setFocusPainted(false);
 
-        JButton pass = new JButton("Pass");
-        pass.setBackground(Color.red);
-        pass.setForeground(Color.white);
-        pass.setFont(normalFont);
-        pass.setFocusPainted(false);
-
-        try {
-            Image img = ImageIO.read(getClass().getResource("img/pass.png"));
-            pass.setIcon(new ImageIcon(img));
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-
-        JButton cont = new JButton(">");
-        cont.setBackground(Color.orange);
-        cont.setForeground(Color.white);
-        cont.setFont(normalFont);
-        cont.setFocusPainted(false);
-
-        try {
-            Image img = ImageIO.read(getClass().getResource("img/continue.png"));
-            cont.setIcon(new ImageIcon(img));
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-
-        fighPassPanel.add(fight);
-        fighPassPanel.add(cont);
-        fighPassPanel.add(pass);
-        window.add(fighPassPanel);
-        
-        updateTurnUI(playerTurn);
-        fight.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(hasChosen == false){
-                // Code to execute when button1 is clicked
-                oppHpAmount -= userDmg;
-                oppHp.setText("Devil's HP: " + oppHpAmount);
-                turnText.setText(userTurn);
-                bodyTextArea.setText("You attacked the opponent, he took " + userDmg + " damage!");
-                hasChosen = true;
-           
-                checkForWinOrLose();
-          
-                }
+            try {
+                Image img = ImageIO.read(getClass().getResource("img/fight.png"));
+                fight.setIcon(new ImageIcon(img));
+            } catch (Exception ex) {
+                System.out.println(ex);
             }
-        });
-        
-        
-        cont.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(hasChosen == true){
-                System.out.println("continue clicked");
-                hasChosen = false;
-                playerTurn = false;
-                updateTurnUI(playerTurn);
-                } else if(hasChosen == false){
-                    playerTurn = true;
-                    turnText.setText("Your Turn");
-                    updateTurnUI(playerTurn);
-                }
-            }
-        });
-        
 
-        // Add ActionListener to button2
-        
-        pass.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(hasChosen == false){
-                turnText.setText(userTurn);
-                hasChosen = true;
-                int chance = random.nextInt(5);
-                if(chance == 0){
-                    userDmg += 150;
-                    
-                    bodyTextArea.setText("[GOOD EVENT]\nYou got lucky! +150 basic attack dmg");
-                } else if(chance == 1){
-                    comDmg += 100;
-                    
-                    bodyTextArea.setText("[BAD EVENT]\nYou're unlucky, you just increased your \nopponents basic attack damage.\nDevil's basic attack damage: +100");
-                } else if(chance == 2){
-                    oppHpAmount -= 200;
-                    
-                    bodyTextArea.setText("[GOOD EVENT]\nInstant 200 damage inflicted on enemy");
-                    oppHp.setText("Devil's HP: " + (oppHpAmount));
-                } else if(chance == 3){
-                    userHpAmount -= 150;
-                    bodyTextArea.setText("[BAD EVENT]\nYour enemy instant inflicted 150 damage on you");
-                    userHp.setText("Your HP: " + (userHpAmount));
-                } else if(chance == 4){
-                    oppHpAmount -= 500;
-                    
-                    bodyTextArea.setText("[GOOD EVENT]\nYou used your ULTIMATE SKILL\nSPECIAL SLASHH!!!!\n500 dmg inflicted on the devil");
-                    oppHp.setText("Devil's HP: " + (oppHpAmount));
-                }
-        
-                  checkForWinOrLose();
-            
-                }
+            JButton pass = new JButton("Pass");
+            pass.setBackground(Color.red);
+            pass.setForeground(Color.white);
+            pass.setFont(normalFont);
+            pass.setFocusPainted(false);
+
+            try {
+                Image img = ImageIO.read(getClass().getResource("img/pass.png"));
+                pass.setIcon(new ImageIcon(img));
+            } catch (Exception ex) {
+                System.out.println(ex);
             }
-        });
-        
+
+            JButton cont = new JButton(">");
+            cont.setBackground(Color.orange);
+            cont.setForeground(Color.white);
+            cont.setFont(normalFont);
+            cont.setFocusPainted(false);
+
+            try {
+                Image img = ImageIO.read(getClass().getResource("img/continue.png"));
+                cont.setIcon(new ImageIcon(img));
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
+
+            fighPassPanel.add(fight);
+            fighPassPanel.add(cont);
+            fighPassPanel.add(pass);
+            window.add(fighPassPanel);
+
+            updateTurnUI(playerTurn);
+            fight.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (hasChosen == false) {
+                        // Code to execute when button1 is clicked
+                        oppHpAmount -= userDmg;
+                        oppHp.setText("Devil's HP: " + oppHpAmount);
+                        turnText.setText(userTurn);
+                        bodyTextArea.setText("You attacked the opponent, he took " + userDmg + " damage!");
+                        hasChosen = true;
+
+                        checkForWinOrLose();
+
+                    }
+                }
+            });
+
+            cont.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (hasChosen == true) {
+                        System.out.println("continue clicked");
+                        hasChosen = false;
+                        playerTurn = false;
+                        updateTurnUI(playerTurn);
+                    } else if (hasChosen == false) {
+                        playerTurn = true;
+                        turnText.setText("Your Turn");
+                        updateTurnUI(playerTurn);
+                    }
+                }
+            });
+
+            // Add ActionListener to button2
+
+            pass.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (hasChosen == false) {
+                        turnText.setText(userTurn);
+                        hasChosen = true;
+                        int chance = random.nextInt(5);
+                        if (chance == 0) {
+                            userDmg += 150;
+
+                            bodyTextArea.setText("[GOOD EVENT]\nYou got lucky! +150 basic attack dmg");
+                        } else if (chance == 1) {
+                            comDmg += 100;
+
+                            bodyTextArea.setText(
+                                    "[BAD EVENT]\nYou're unlucky, you just increased your \nopponents basic attack damage.\nDevil's basic attack damage: +100");
+                        } else if (chance == 2) {
+                            oppHpAmount -= 200;
+
+                            bodyTextArea.setText("[GOOD EVENT]\nInstant 200 damage inflicted on enemy");
+                            oppHp.setText("Devil's HP: " + (oppHpAmount));
+                        } else if (chance == 3) {
+                            userHpAmount -= 150;
+                            bodyTextArea.setText("[BAD EVENT]\nYour enemy instant inflicted 150 damage on you");
+                            userHp.setText("Your HP: " + (userHpAmount));
+                        } else if (chance == 4) {
+                            oppHpAmount -= 500;
+
+                            bodyTextArea.setText(
+                                    "[GOOD EVENT]\nYou used your ULTIMATE SKILL\nSPECIAL SLASHH!!!!\n500 dmg inflicted on the devil");
+                            oppHp.setText("Devil's HP: " + (oppHpAmount));
+                        }
+
+                        checkForWinOrLose();
+
+                    }
+                }
+            });
+
         }
     }
 
     private void updateTurnUI(boolean turn) {
         if (turn) {
-            bodyTextArea.setText("What's will you do?\nFIGHT - Damage dealing\nPASS - Skip turn | Good Event Chance: 50% |\n                            | Bad Event Chance: 50%  |");
+            bodyTextArea.setText(
+                    "What's will you do?\nFIGHT - Damage dealing\nPASS - Skip turn | Good Event Chance: 50% |\n                            | Bad Event Chance: 50%  |");
         } else {
             int rng = random.nextInt(9);
             turnText.setText("Devil's Turn");
-            if(rng == 0 || rng == 1 || rng == 2 || rng == 3){
+            if (rng == 0 || rng == 1 || rng == 2 || rng == 3) {
                 userHpAmount -= comDmg;
                 bodyTextArea.setText("Devil used basic attack. -" + comDmg + "hp");
                 userHp.setText("Your HP: " + (userHpAmount));
                 rng = random.nextInt(9);
-            } else if(rng == 4 || rng == 5 || rng == 6 || rng == 7){
+            } else if (rng == 4 || rng == 5 || rng == 6 || rng == 7) {
                 userHpAmount -= 150;
                 bodyTextArea.setText("Devil used fireball. -150hp");
                 userHp.setText("Your HP: " + (userHpAmount));
                 rng = random.nextInt(9);
-            
-            } else if(rng == 8){
+
+            } else if (rng == 8) {
                 userHpAmount -= 400;
-                bodyTextArea.setText("Devil used his [ULTIMATE SKILL]\n[BLACK HOLE EXPLOSION]\nA black hole consumed you\n-400HP");
+                bodyTextArea.setText(
+                        "Devil used his [ULTIMATE SKILL]\n[BLACK HOLE EXPLOSION]\nA black hole consumed you\n-400HP");
                 rng = random.nextInt(9);
                 userHp.setText("Your HP: " + (userHpAmount));
             }
-            
+
             checkForWinOrLose();
             hasChosen = false;
 
@@ -512,40 +540,12 @@ public class soulArray {
     }
 
     private void showWinScreen() {
-            bodyTextArea.setText("You Win! +2000 coins");
-            coins += 2000;
-            if (endGameTimer != null) {
-                endGameTimer.stop();
-            }
-        
-            endGameTimer = new Timer(6000, new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    mainMenu();
-                    resetGame();
-                }
-            });
-            endGameTimer.setRepeats(false);
-            endGameTimer.start();
-}
-
-private void showLoseScreen() {
-    bodyTextArea.setText("You Lose! -2000 coins");
-    coins -= 2000;
-    if(coins <= 0){
-        goBackToMainB.setVisible(false);
-        userHpLabel.setVisible(false);
-        oppHpLabel.setVisible(false);
-        turnPanel.setVisible(false);
-        fighPassPanel.setVisible(false);
-
-        bodyTextArea.setText("You have no coins left, you lose");
-        bodyTextArea.setEditable(false);
-    } else{
+        bodyTextArea.setText("You Win! +2000 coins");
+        coins += 2000;
         if (endGameTimer != null) {
             endGameTimer.stop();
         }
-    
+
         endGameTimer = new Timer(6000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -556,382 +556,431 @@ private void showLoseScreen() {
         endGameTimer.setRepeats(false);
         endGameTimer.start();
     }
-}
-private void resetGame() {
-    // Hide all panels used in danceWdevil
-    if (gamesButtons != null) gamesButtons.setVisible(false);
-    if (menuButton != null) menuButton.setVisible(false);
-    if (mainTextPanel != null) mainTextPanel.setVisible(false);
-    if (coinsPanel != null) coinsPanel.setVisible(false);
-    if (userHpLabel != null) userHpLabel.setVisible(false);
-    if (oppHpLabel != null) oppHpLabel.setVisible(false);
-    if (turnPanel != null) turnPanel.setVisible(false);
-    if (bodyTextPanel != null) bodyTextPanel.setVisible(false);
-    if (fighPassPanel != null) fighPassPanel.setVisible(false);
-    if (hrTitlePanel != null) hrTitlePanel.setVisible(false);
-    if (hrSubPanel != null) hrSubPanel.setVisible(false);
-    if (hrBetPanel != null) hrBetPanel.setVisible(false);
-    if (horses != null) horses.setVisible(false);
-    if (hrInputPanel != null) hrInputPanel.setVisible(false);
-    if (horsePodiumPanel != null) horsePodiumPanel.setVisible(false);
-    if (otherHorsesPanel != null) otherHorsesPanel.setVisible(false);
-    menuButton.setVisible(true);
-    // Reset any other necessary game state here
-}
 
-private void checkForWinOrLose() {
-    if (userHpAmount <= 0) {
-        userHpAmount = 0;
-        userHp.setText("Your HP: " + userHpAmount);
-        Timer timer = new Timer(6000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                showLoseScreen();
-            }
-        });
-        timer.setRepeats(false);
-        timer.start();
-    } else if (oppHpAmount <= 0) {
-        oppHpAmount = 0;
-        oppHp.setText("Devil's HP: " + oppHpAmount);
-        Timer timer = new Timer(6000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                showWinScreen();
-            }
-        });
-        timer.setRepeats(false);
-        timer.start();
-    }
-}
-
-public void horseRacing(){
-    if (gamesButtons != null) gamesButtons.setVisible(false);
-    if (menuButton != null) menuButton.setVisible(false);
-    if (mainTextPanel != null) mainTextPanel.setVisible(false);
-    coinsPanel.setBounds(300, 80, 200, 50);
-
-    hrTitlePanel = new JPanel();
-    hrTitlePanel.setBounds(150, 150, 500, 75);
-    hrTitlePanel.setBackground(Color.black);
-
-    hrTitle = new JLabel("Horse Racing");
-    hrTitle.setForeground(Color.red);
-    hrTitle.setFont(subFont);
-
-    hrTitlePanel.add(hrTitle);
-    window.add(hrTitlePanel);
-
-    hrSubPanel = new JPanel();
-    hrSubPanel.setBounds(150, 240, 500, 80);
-    hrSubPanel.setBackground(Color.black);
-
-    hrSubtitle = new JLabel("Pick your horse");
-    hrSubtitle.setForeground(Color.white);
-    hrSubtitle.setFont(normalFont);
-
-    hrSubPanel.add(hrSubtitle);
-    window.add(hrSubPanel);
-
-    horses = new JPanel();
-    horses.setBounds(250, 350, 300, 150);
-    horses.setBackground(Color.black);
-    horses.setLayout(new GridLayout(5, 1));
-    window.add(horses); 
-
-    CERBERUS = choiceButton("CERBERUS");
-    PERSEPHONE = choiceButton("PERSEPHONE");
-    HADES = choiceButton("HADES");
-    VOSKOPOULOS = choiceButton("VOSKOPOULOS");
-    TOM = choiceButton("TOM");
-
-    hrInputPanel = new JPanel();
-
-    hrInputField = new JTextField(10);
-
-    ActionListener placeButtonAction = e -> {
-        try {
-            betAmount[0] = Integer.parseInt(hrInputField.getText());
-            if (betAmount[0] > coins) {
-                JOptionPane.showMessageDialog(window, "Amount to bet cannot be more than the coins you currently have.");
-            } else if (betAmount[0] > 0) {
-                showWinner();
-            } else {
-                JOptionPane.showMessageDialog(window, "Please enter a positive integer amount.");
-            }
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(window, "Please enter a valid integer amount.");
-        }
-    };
-
-    ActionListener horseSelectionAction = e -> {
-        JButton selectedButton = (JButton) e.getSource();
-        String horseName = selectedButton.getText();
-        selectedHorse[0] = horseName;
-        
-        horses.setVisible(false);
-        hrSubPanel.setVisible(false);
-        
-        hrInputPanel.setBounds(150, 340, 500, 80);
-        hrInputPanel.setBackground(Color.black);
-        hrInputField.setFont(normalFont);
-        hrInputButton = new JButton("Place Bet");
-        hrInputButton.setFont(normalFont);
-        hrInputPanel.add(hrInputField);
-        hrInputPanel.add(hrInputButton);
-        window.add(hrInputPanel);
-
-        hrInputButton.addActionListener(placeButtonAction);
-    };
-
-    CERBERUS.addActionListener(horseSelectionAction);
-    PERSEPHONE.addActionListener(horseSelectionAction);
-    HADES.addActionListener(horseSelectionAction);
-    VOSKOPOULOS.addActionListener(horseSelectionAction);
-    TOM.addActionListener(horseSelectionAction);
-
-    horses.add(CERBERUS);
-    horses.add(PERSEPHONE);
-    horses.add(HADES);
-    horses.add(VOSKOPOULOS);
-    horses.add(TOM);
-
-    hrBetPanel = new JPanel();
-    hrBetPanel.setBounds(150, 240, 500, 80);
-    hrBetPanel.setBackground(Color.black);
-
-    hrEnterBet = new JLabel("Enter amount to bet.");
-    hrEnterBet.setForeground(Color.white);
-    hrEnterBet.setFont(normalFont);
-
-    hrBetPanel.add(hrEnterBet);
-    window.add(hrBetPanel); 
-}
-
-private void showWinner() {
-    hrTitlePanel.setVisible(false);
-    hrSubPanel.setVisible(false);
-    horses.setVisible(false);
-    hrInputPanel.setVisible(false);
-    hrBetPanel.setVisible(false);
-    coinsPanel.setVisible(false);
-
-    Random rand = new Random();
-    String[] horseList = {"CERBERUS", "PERSEPHONE", "HADES", "VOSKOPOULOS", "TOM"};
-    int winningIndex = rand.nextInt(horseList.length);
-    String winningHorse = horseList[winningIndex];
-
-    int betAmount = this.betAmount[0]; 
-    int coinsWon = 0;
-
-    horsePodiumPanel = new JPanel();
-    horsePodiumPanel.setBounds(100, 200, 600, 110);
-    horsePodiumPanel.setBackground(Color.RED);
-    
-    winnerLabel = new JLabel(winningHorse);
-    winnerLabel.setHorizontalAlignment(JLabel.CENTER);
-    winnerLabel.setVerticalAlignment(JLabel.CENTER);
-    winnerLabel.setForeground(Color.WHITE);
-    winnerLabel.setFont(subFont);
-
-    horsePodiumPanel.add(winnerLabel);
-
-    theWinnerIsPanel = new JPanel();
-    theWinnerIsPanel.setBounds(100, 300, 200, 70);
-    theWinnerIsPanel.setBackground(Color.RED);
-
-    theWinnerIsLabel = new JLabel("Winner");
-    theWinnerIsLabel.setHorizontalAlignment(JLabel.CENTER);
-    theWinnerIsLabel.setVerticalAlignment(JLabel.CENTER);
-    theWinnerIsLabel.setForeground(Color.WHITE);
-    theWinnerIsLabel.setFont(normalFont);
-    
-    theWinnerIsPanel.add(theWinnerIsLabel);
-
-    otherHorsesPanel = new JPanel();
-    otherHorsesPanel.setBounds(100, 300, 600, 110);
-    otherHorsesPanel.setBackground(Color.RED);
-    otherHorsesPanel.setLayout(new GridLayout(4, 1, 8, 10)); 
-
-    String[] remainingHorses = new String[horseList.length - 1];
-    int j = 0;
-    for (int i = 0; i < horseList.length; i++) {
-        if (i != winningIndex) {
-            remainingHorses[j++] = horseList[i];
-        }
-    }
-
-    for (int i = 0; i < remainingHorses.length; i++) {
-        int randomIndex = rand.nextInt(remainingHorses.length - i);
-        String temp = remainingHorses[randomIndex];
-        remainingHorses[randomIndex] = remainingHorses[i];
-        remainingHorses[i] = temp;
-    }
-
-    for (String horse : remainingHorses) {
-        JLabel otherHorseLabel = new JLabel(horse);
-        otherHorseLabel.setHorizontalAlignment(JLabel.CENTER);
-        otherHorseLabel.setForeground(Color.WHITE);
-        otherHorseLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-        otherHorsesPanel.add(otherHorseLabel);
-    }
-
-    window.add(otherHorsesPanel);
-    window.add(horsePodiumPanel);
-    
-    if (winningHorse.equals(selectedHorse[0])) {
-        System.out.println(coins);
-        coinsWon = 4 * betAmount;
-        coins += coinsWon; 
-        JOptionPane.showMessageDialog(window, "You won " + coinsWon + " coins!");
-        coinsText.setText("Coins: " + coins);
-        System.out.println(coins + ": coins, " + betAmount + ": bet amount, " + coinsWon + ": coins won");
-        Timer timer = new Timer(2000, e -> {
-            mainMenu(); 
-        });
-        timer.setRepeats(false); 
-        timer.start(); 
-    } else {
-        boolean lostHorseRacing = false;
-        System.out.println(coins);
-        coins -= betAmount;
-        JOptionPane.showMessageDialog(window, "You lost " + betAmount + " coins.");
-        coinsText.setText("Coins: " + coins);
-        System.out.println(coins + ": coins, " + betAmount + ": bet amount");
+    private void showLoseScreen() {
+        bodyTextArea.setText("You Lose! -2000 coins");
+        coins -= 2000;
         if (coins <= 0) {
             goBackToMainB.setVisible(false);
-            coinsPanel.setVisible(false);
-            otherHorsesPanel.setVisible(false);
-            horsePodiumPanel.setVisible(false);
-            losingScreenPanel = new JPanel();
-            losingScreenPanel.setBounds(100, 200, 600, 300);
-            losingScreenPanel.setBackground(Color.RED);
-            losingScreenLabel = new JLabel("You have run out of coins. Better luck next time!");
-            losingScreenLabel.setHorizontalAlignment(JLabel.CENTER);
-            losingScreenLabel.setVerticalAlignment(JLabel.CENTER);
-            losingScreenLabel.setForeground(Color.WHITE);
-            losingScreenLabel.setFont(normalFont);
-            losingScreenPanel.add(losingScreenLabel);
-            window.add(losingScreenPanel);
-            lostHorseRacing = true;
-        }
-        if (!lostHorseRacing){
-            Timer timer = new Timer(2000, e -> {
-                mainMenu(); 
+            userHpLabel.setVisible(false);
+            oppHpLabel.setVisible(false);
+            turnPanel.setVisible(false);
+            fighPassPanel.setVisible(false);
+
+            bodyTextArea.setText("You have no coins left, you lose");
+            bodyTextArea.setEditable(false);
+        } else {
+            if (endGameTimer != null) {
+                endGameTimer.stop();
+            }
+
+            endGameTimer = new Timer(6000, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    mainMenu();
+                    resetGame();
+                }
             });
-            timer.setRepeats(false); 
-            timer.start(); 
+            endGameTimer.setRepeats(false);
+            endGameTimer.start();
         }
     }
 
-    coinsPanel.setBounds(300, 80, 200, 50);
-}
+    private void resetGame() {
+        // Hide all panels used in danceWdevil
+        if (gamesButtons != null)
+            gamesButtons.setVisible(false);
+        if (menuButton != null)
+            menuButton.setVisible(false);
+        if (mainTextPanel != null)
+            mainTextPanel.setVisible(false);
+        if (coinsPanel != null)
+            coinsPanel.setVisible(false);
+        if (userHpLabel != null)
+            userHpLabel.setVisible(false);
+        if (oppHpLabel != null)
+            oppHpLabel.setVisible(false);
+        if (turnPanel != null)
+            turnPanel.setVisible(false);
+        if (bodyTextPanel != null)
+            bodyTextPanel.setVisible(false);
+        if (fighPassPanel != null)
+            fighPassPanel.setVisible(false);
+        if (hrTitlePanel != null)
+            hrTitlePanel.setVisible(false);
+        if (hrSubPanel != null)
+            hrSubPanel.setVisible(false);
+        if (hrBetPanel != null)
+            hrBetPanel.setVisible(false);
+        if (horses != null)
+            horses.setVisible(false);
+        if (hrInputPanel != null)
+            hrInputPanel.setVisible(false);
+        if (horsePodiumPanel != null)
+            horsePodiumPanel.setVisible(false);
+        if (otherHorsesPanel != null)
+            otherHorsesPanel.setVisible(false);
+        menuButton.setVisible(true);
+        // Reset any other necessary game state here
+    }
 
-public void Elemental() {
-    elementalPanel = new JPanel();
+    private void checkForWinOrLose() {
+        if (userHpAmount <= 0) {
+            userHpAmount = 0;
+            userHp.setText("Your HP: " + userHpAmount);
+            Timer timer = new Timer(6000, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    showLoseScreen();
+                }
+            });
+            timer.setRepeats(false);
+            timer.start();
+        } else if (oppHpAmount <= 0) {
+            oppHpAmount = 0;
+            oppHp.setText("Devil's HP: " + oppHpAmount);
+            Timer timer = new Timer(6000, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    showWinScreen();
+                }
+            });
+            timer.setRepeats(false);
+            timer.start();
+        }
+    }
+
+    public void horseRacing() {
+        if (gamesButtons != null)
+            gamesButtons.setVisible(false);
+        if (menuButton != null)
+            menuButton.setVisible(false);
+        if (mainTextPanel != null)
+            mainTextPanel.setVisible(false);
+        coinsPanel.setBounds(300, 80, 200, 50);
+
+        hrTitlePanel = new JPanel();
+        hrTitlePanel.setBounds(150, 150, 500, 75);
+        hrTitlePanel.setBackground(Color.black);
+
+        hrTitle = new JLabel("Horse Racing");
+        hrTitle.setForeground(Color.red);
+        hrTitle.setFont(subFont);
+
+        hrTitlePanel.add(hrTitle);
+        window.add(hrTitlePanel);
+
+        hrSubPanel = new JPanel();
+        hrSubPanel.setBounds(150, 240, 500, 80);
+        hrSubPanel.setBackground(Color.black);
+
+        hrSubtitle = new JLabel("Pick your horse");
+        hrSubtitle.setForeground(Color.white);
+        hrSubtitle.setFont(normalFont);
+
+        hrSubPanel.add(hrSubtitle);
+        window.add(hrSubPanel);
+
+        horses = new JPanel();
+        horses.setBounds(250, 350, 300, 150);
+        horses.setBackground(Color.black);
+        horses.setLayout(new GridLayout(5, 1));
+        window.add(horses);
+
+        CERBERUS = choiceButton("CERBERUS");
+        PERSEPHONE = choiceButton("PERSEPHONE");
+        HADES = choiceButton("HADES");
+        VOSKOPOULOS = choiceButton("VOSKOPOULOS");
+        TOM = choiceButton("TOM");
+
+        hrInputPanel = new JPanel();
+
+        hrInputField = new JTextField(10);
+
+        ActionListener placeButtonAction = e -> {
+            try {
+                betAmount[0] = Integer.parseInt(hrInputField.getText());
+                if (betAmount[0] > coins) {
+                    JOptionPane.showMessageDialog(window,
+                            "Amount to bet cannot be more than the coins you currently have.");
+                } else if (betAmount[0] > 0) {
+                    showWinner();
+                } else {
+                    JOptionPane.showMessageDialog(window, "Please enter a positive integer amount.");
+                }
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(window, "Please enter a valid integer amount.");
+            }
+        };
+
+        ActionListener horseSelectionAction = e -> {
+            JButton selectedButton = (JButton) e.getSource();
+            String horseName = selectedButton.getText();
+            selectedHorse[0] = horseName;
+
+            horses.setVisible(false);
+            hrSubPanel.setVisible(false);
+
+            hrInputPanel.setBounds(150, 340, 500, 80);
+            hrInputPanel.setBackground(Color.black);
+            hrInputField.setFont(normalFont);
+            hrInputButton = new JButton("Place Bet");
+            hrInputButton.setFont(normalFont);
+            hrInputPanel.add(hrInputField);
+            hrInputPanel.add(hrInputButton);
+            window.add(hrInputPanel);
+
+            hrInputButton.addActionListener(placeButtonAction);
+        };
+
+        CERBERUS.addActionListener(horseSelectionAction);
+        PERSEPHONE.addActionListener(horseSelectionAction);
+        HADES.addActionListener(horseSelectionAction);
+        VOSKOPOULOS.addActionListener(horseSelectionAction);
+        TOM.addActionListener(horseSelectionAction);
+
+        horses.add(CERBERUS);
+        horses.add(PERSEPHONE);
+        horses.add(HADES);
+        horses.add(VOSKOPOULOS);
+        horses.add(TOM);
+
+        hrBetPanel = new JPanel();
+        hrBetPanel.setBounds(150, 240, 500, 80);
+        hrBetPanel.setBackground(Color.black);
+
+        hrEnterBet = new JLabel("Enter amount to bet.");
+        hrEnterBet.setForeground(Color.white);
+        hrEnterBet.setFont(normalFont);
+
+        hrBetPanel.add(hrEnterBet);
+        window.add(hrBetPanel);
+    }
+
+    private void showWinner() {
+        hrTitlePanel.setVisible(false);
+        hrSubPanel.setVisible(false);
+        horses.setVisible(false);
+        hrInputPanel.setVisible(false);
+        hrBetPanel.setVisible(false);
+        coinsPanel.setVisible(false);
+
+        Random rand = new Random();
+        String[] horseList = { "CERBERUS", "PERSEPHONE", "HADES", "VOSKOPOULOS", "TOM" };
+        int winningIndex = rand.nextInt(horseList.length);
+        String winningHorse = horseList[winningIndex];
+
+        int betAmount = this.betAmount[0];
+        int coinsWon = 0;
+
+        horsePodiumPanel = new JPanel();
+        horsePodiumPanel.setBounds(100, 200, 600, 110);
+        horsePodiumPanel.setBackground(Color.RED);
+
+        winnerLabel = new JLabel(winningHorse);
+        winnerLabel.setHorizontalAlignment(JLabel.CENTER);
+        winnerLabel.setVerticalAlignment(JLabel.CENTER);
+        winnerLabel.setForeground(Color.WHITE);
+        winnerLabel.setFont(subFont);
+
+        horsePodiumPanel.add(winnerLabel);
+
+        theWinnerIsPanel = new JPanel();
+        theWinnerIsPanel.setBounds(100, 300, 200, 70);
+        theWinnerIsPanel.setBackground(Color.RED);
+
+        theWinnerIsLabel = new JLabel("Winner");
+        theWinnerIsLabel.setHorizontalAlignment(JLabel.CENTER);
+        theWinnerIsLabel.setVerticalAlignment(JLabel.CENTER);
+        theWinnerIsLabel.setForeground(Color.WHITE);
+        theWinnerIsLabel.setFont(normalFont);
+
+        theWinnerIsPanel.add(theWinnerIsLabel);
+
+        otherHorsesPanel = new JPanel();
+        otherHorsesPanel.setBounds(100, 300, 600, 110);
+        otherHorsesPanel.setBackground(Color.RED);
+        otherHorsesPanel.setLayout(new GridLayout(4, 1, 8, 10));
+
+        String[] remainingHorses = new String[horseList.length - 1];
+        int j = 0;
+        for (int i = 0; i < horseList.length; i++) {
+            if (i != winningIndex) {
+                remainingHorses[j++] = horseList[i];
+            }
+        }
+
+        for (int i = 0; i < remainingHorses.length; i++) {
+            int randomIndex = rand.nextInt(remainingHorses.length - i);
+            String temp = remainingHorses[randomIndex];
+            remainingHorses[randomIndex] = remainingHorses[i];
+            remainingHorses[i] = temp;
+        }
+
+        for (String horse : remainingHorses) {
+            JLabel otherHorseLabel = new JLabel(horse);
+            otherHorseLabel.setHorizontalAlignment(JLabel.CENTER);
+            otherHorseLabel.setForeground(Color.WHITE);
+            otherHorseLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+            otherHorsesPanel.add(otherHorseLabel);
+        }
+
+        window.add(otherHorsesPanel);
+        window.add(horsePodiumPanel);
+
+        if (winningHorse.equals(selectedHorse[0])) {
+            System.out.println(coins);
+            coinsWon = 4 * betAmount;
+            coins += coinsWon;
+            JOptionPane.showMessageDialog(window, "You won " + coinsWon + " coins!");
+            coinsText.setText("Coins: " + coins);
+            System.out.println(coins + ": coins, " + betAmount + ": bet amount, " + coinsWon + ": coins won");
+            Timer timer = new Timer(2000, e -> {
+                mainMenu();
+            });
+            timer.setRepeats(false);
+            timer.start();
+        } else {
+            boolean lostHorseRacing = false;
+            System.out.println(coins);
+            coins -= betAmount;
+            JOptionPane.showMessageDialog(window, "You lost " + betAmount + " coins.");
+            coinsText.setText("Coins: " + coins);
+            System.out.println(coins + ": coins, " + betAmount + ": bet amount");
+            if (coins <= 0) {
+                goBackToMainB.setVisible(false);
+                coinsPanel.setVisible(false);
+                otherHorsesPanel.setVisible(false);
+                horsePodiumPanel.setVisible(false);
+                losingScreenPanel = new JPanel();
+                losingScreenPanel.setBounds(100, 200, 600, 300);
+                losingScreenPanel.setBackground(Color.RED);
+                losingScreenLabel = new JLabel("You have run out of coins. Better luck next time!");
+                losingScreenLabel.setHorizontalAlignment(JLabel.CENTER);
+                losingScreenLabel.setVerticalAlignment(JLabel.CENTER);
+                losingScreenLabel.setForeground(Color.WHITE);
+                losingScreenLabel.setFont(normalFont);
+                losingScreenPanel.add(losingScreenLabel);
+                window.add(losingScreenPanel);
+                lostHorseRacing = true;
+            }
+            if (!lostHorseRacing) {
+                Timer timer = new Timer(2000, e -> {
+                    mainMenu();
+                });
+                timer.setRepeats(false);
+                timer.start();
+            }
+        }
+
+        coinsPanel.setBounds(300, 80, 200, 50);
+    }
+
+    public void Elemental() {
+        elementalPanel = new JPanel();
         elementalPanel.setBounds(150, 150, 500, 150);
         elementalPanel.setBackground(Color.white);
         elementalArea = new JTextArea("");
         elementalArea.setForeground(Color.black);
         elementalArea.setFont(normalFont);
-        
+
         elementalPanel.add(elementalArea);
         window.add(elementalPanel);
-    if (gamesButtons != null)
-        gamesButtons.setVisible(false);
-    if (menuButton != null)
-        menuButton.setVisible(false);
-    if (mainTextPanel != null)
-        mainTextPanel.setVisible(false);
-    coinsPanel.setBounds(300, 80, 200, 50);
+        if (gamesButtons != null)
+            gamesButtons.setVisible(false);
+        if (menuButton != null)
+            menuButton.setVisible(false);
+        if (mainTextPanel != null)
+            mainTextPanel.setVisible(false);
+        coinsPanel.setBounds(300, 80, 200, 50);
 
-    choice = new JLabel();
-    choice.setBounds(50, 400, 700, 70);
-    choice.setBackground(Color.black);
-    choice.setLayout(new GridLayout(1, 3));
-    window.add(choice);
+        choice = new JLabel();
+        choice.setBounds(50, 400, 700, 70);
+        choice.setBackground(Color.black);
+        choice.setLayout(new GridLayout(1, 3));
+        window.add(choice);
 
-    fire = choiceButton("Fire");
-    water = choiceButton("Water");
-    earth = choiceButton("Earth");
+        fire = choiceButton("Fire");
+        water = choiceButton("Water");
+        earth = choiceButton("Earth");
 
-    choice.add(fire);
-    fire.setBackground(Color.red);
-    try {
-        Image img = ImageIO.read(getClass().getResource("img/fire.png"));
-        fire.setIcon(new ImageIcon(img));
-    } catch (Exception ex) {
-        System.out.println(ex);
-    }
-    choice.add(water);
-    water.setBackground(Color.blue);
-    try {
-        Image img = ImageIO.read(getClass().getResource("img/water.png"));
-        water.setIcon(new ImageIcon(img));
-    } catch (Exception ex) {
-        System.out.println(ex);
-    }
-    choice.add(earth);
-    earth.setBackground(Color.green);
-    try {
-        Image img = ImageIO.read(getClass().getResource("img/earth.png"));
-        earth.setIcon(new ImageIcon(img));
-    } catch (Exception ex) {
-        System.out.println(ex);
-    }
-
-    fire.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            playGame("Fire");
+        choice.add(fire);
+        fire.setBackground(Color.red);
+        try {
+            Image img = ImageIO.read(getClass().getResource("img/fire.png"));
+            fire.setIcon(new ImageIcon(img));
+        } catch (Exception ex) {
+            System.out.println(ex);
         }
-    });
-
-    water.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            playGame("Water");
+        choice.add(water);
+        water.setBackground(Color.blue);
+        try {
+            Image img = ImageIO.read(getClass().getResource("img/water.png"));
+            water.setIcon(new ImageIcon(img));
+        } catch (Exception ex) {
+            System.out.println(ex);
         }
-    });
-
-    earth.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            playGame("Earth");
+        choice.add(earth);
+        earth.setBackground(Color.green);
+        try {
+            Image img = ImageIO.read(getClass().getResource("img/earth.png"));
+            earth.setIcon(new ImageIcon(img));
+        } catch (Exception ex) {
+            System.out.println(ex);
         }
-    });
-}
 
-private void playGame(String userChoice) {
-    String[] choices = { "Fire", "Water", "Earth" };
-    Random random = new Random();
-    String computerChoice = choices[random.nextInt(choices.length)];
+        fire.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                playGame("Fire");
+            }
+        });
 
-    String result;
-    if (userChoice.equals(computerChoice)) {
-        result = "It's a draw!";
-    } else if ((userChoice.equals("Fire") && computerChoice.equals("Earth")) ||
-            (userChoice.equals("Water") && computerChoice.equals("Fire")) ||
-            (userChoice.equals("Earth") && computerChoice.equals("Water"))) {
-        result = "you win! +50!";
-        coins += 50;
-        coinsText.setText("Coins: " + coins);
-    } else {
-        result = "You lose! -50";
-        coins -= 50;
-        coinsText.setText("Coins: " + coins);
+        water.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                playGame("Water");
+            }
+        });
+
+        earth.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                playGame("Earth");
+            }
+        });
     }
 
-    if(coins <= 0){
-        goBackToMainB.setVisible(false);
-        choice.setVisible(false);
-        elementalArea.setText("You have no coins left, you lose");
-        elementalArea.setEditable(false);
-    } else{
-        elementalArea.setText("You chose " + userChoice + "\nComputer chose " + computerChoice + "\n" + result);
-        elementalArea.setEditable(false);
+    private void playGame(String userChoice) {
+        String[] choices = { "Fire", "Water", "Earth" };
+        Random random = new Random();
+        String computerChoice = choices[random.nextInt(choices.length)];
+
+        String result;
+        if (userChoice.equals(computerChoice)) {
+            result = "It's a draw!";
+        } else if ((userChoice.equals("Fire") && computerChoice.equals("Earth")) ||
+                (userChoice.equals("Water") && computerChoice.equals("Fire")) ||
+                (userChoice.equals("Earth") && computerChoice.equals("Water"))) {
+            result = "you win! +50!";
+            coins += 50;
+            coinsText.setText("Coins: " + coins);
+        } else {
+            result = "You lose! -50";
+            coins -= 50;
+            coinsText.setText("Coins: " + coins);
+        }
+
+        if (coins <= 0) {
+            goBackToMainB.setVisible(false);
+            choice.setVisible(false);
+            elementalArea.setText("You have no coins left, you lose");
+            elementalArea.setEditable(false);
+        } else {
+            elementalArea.setText("You chose " + userChoice + "\nComputer chose " + computerChoice + "\n" + result);
+            elementalArea.setEditable(false);
+        }
     }
-}
 
     public JButton choiceButton(String text) {
         JButton button = new JButton(text);
@@ -942,15 +991,17 @@ private void playGame(String userChoice) {
         return button;
     }
 
-    public void buy(){
+    public void buy() {
         goBackToMainPanel.setVisible(true);
-        if (menuPanel != null) menuPanel.setVisible(false);
-        if (menuButton != null) menuButton.setVisible(false);
-        
+        if (menuPanel != null)
+            menuPanel.setVisible(false);
+        if (menuButton != null)
+            menuButton.setVisible(false);
+
         mainTextPanel.setVisible(true);
         mainTextArea.setText("Which organ do you want to buy?");
         messageTextArea.setText(""); // Clear the message area
-    
+
         coinsPanel = new JPanel();
         coinsPanel.setBounds(80, 100, 600, 150);
         coinsPanel.setBackground(Color.black);
@@ -959,48 +1010,48 @@ private void playGame(String userChoice) {
         coinsText.setForeground(Color.yellow);
         coinsText.setFont(normalFont);
         coinsPanel.add(coinsText);
-    
+
         organsButtons = new JPanel();
         organsButtons.setBounds(225, 350, 300, 150);
         organsButtons.setBackground(Color.black);
         organsButtons.setLayout(new GridLayout(5, 1));
-        window.add(organsButtons); 
-    
+        window.add(organsButtons);
+
         brain = choiceButton("Brain" + ": " + mainArrayPrice.get(0));
         brain.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 buyOrgan("BRAIN", mainArray, mainArrayPrice);
             }
         });
-    
+
         guts = choiceButton("Guts" + ": " + mainArrayPrice.get(1));
         guts.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 buyOrgan("GUTS", mainArray, mainArrayPrice);
             }
         });
-    
+
         hands = choiceButton("Hands" + ": " + mainArrayPrice.get(2));
         hands.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 buyOrgan("HANDS", mainArray, mainArrayPrice);
             }
         });
-    
+
         heart = choiceButton("Heart" + ": " + mainArrayPrice.get(3));
         heart.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 buyOrgan("HEART", mainArray, mainArrayPrice);
             }
         });
-    
+
         legs = choiceButton("Legs" + ": " + mainArrayPrice.get(4));
         legs.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 buyOrgan("LEGS", mainArray, mainArrayPrice);
             }
         });
-    
+
         organsButtons.add(brain);
         organsButtons.add(guts);
         organsButtons.add(hands);
@@ -1008,7 +1059,7 @@ private void playGame(String userChoice) {
         organsButtons.add(legs);
         window.add(coinsPanel);
 
-        if(mainArray.isEmpty()){
+        if (mainArray.isEmpty()) {
             organsButtons.setVisible(false);
             coinsPanel.setVisible(false);
             messageTextArea.setVisible(false);
@@ -1019,13 +1070,15 @@ private void playGame(String userChoice) {
 
     public void sell() {
         goBackToMainPanel.setVisible(true);
-        if (menuPanel != null) menuPanel.setVisible(false);
-        if (menuButton != null) menuButton.setVisible(false);
-        
+        if (menuPanel != null)
+            menuPanel.setVisible(false);
+        if (menuButton != null)
+            menuButton.setVisible(false);
+
         mainTextPanel.setVisible(true);
         mainTextArea.setText("Which organ do you want to sell?");
         messageTextArea.setText(""); // Clear the message area
-    
+
         coinsPanel = new JPanel();
         coinsPanel.setBounds(80, 100, 600, 150);
         coinsPanel.setBackground(Color.black);
@@ -1034,13 +1087,13 @@ private void playGame(String userChoice) {
         coinsText.setForeground(Color.yellow);
         coinsText.setFont(normalFont);
         coinsPanel.add(coinsText);
-    
+
         organsButtons = new JPanel();
         organsButtons.setBounds(225, 350, 300, 150);
         organsButtons.setBackground(Color.black);
         organsButtons.setLayout(new GridLayout(5, 1));
-        window.add(organsButtons); 
-    
+        window.add(organsButtons);
+
         eyes = choiceButton("Eyes" + ": " + sellArrayPrice.get(0));
         eyes.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -1075,7 +1128,7 @@ private void playGame(String userChoice) {
                 sellOrgan("SKIN", sellArray, sellArrayPrice);
             }
         });
-    
+
         organsButtons.add(eyes);
         organsButtons.add(lungs);
         organsButtons.add(kidney);
@@ -1083,7 +1136,7 @@ private void playGame(String userChoice) {
         organsButtons.add(skin);
         window.add(coinsPanel);
 
-        if(sellArray.isEmpty()){
+        if (sellArray.isEmpty()) {
             organsButtons.setVisible(false);
             coinsPanel.setVisible(false);
             messageTextArea.setVisible(false);
@@ -1124,7 +1177,7 @@ private void playGame(String userChoice) {
                 messageTextArea.setText("Not enough coins to buy " + organ);
             }
         }
-        if(organsList.isEmpty()){
+        if (organsList.isEmpty()) {
             organsButtons.setVisible(false);
             coinsPanel.setVisible(false);
             messageTextArea.setVisible(false);
@@ -1162,7 +1215,7 @@ private void playGame(String userChoice) {
                     break;
             }
         }
-        if(organsList.isEmpty()){
+        if (organsList.isEmpty()) {
             organsButtons.setVisible(false);
             coinsPanel.setVisible(false);
             messageTextArea.setVisible(false);
@@ -1171,21 +1224,22 @@ private void playGame(String userChoice) {
     }
 
     public class TitleScreenHandler implements ActionListener {
-        public void actionPerformed(ActionEvent event){
+        public void actionPerformed(ActionEvent event) {
             storyScreen();
         }
     }
 
     public class ContinueButtonHandler implements ActionListener {
         private int clickCount = 0;
+
         public void actionPerformed(ActionEvent event) {
             clickCount++;
             if (clickCount == 1) {
-                mainTextArea.setText("And now you regret it?");
+                mainTextArea.setText("And now you want your soul back?");
             } else if (clickCount == 2) {
-                mainTextArea.setText("Fine, you can have it back");
+                mainTextArea.setText("Fine.");
             } else if (clickCount == 3) {
-                mainTextArea.setText("If you can beat me in a little game of course");
+                mainTextArea.setText("If you manage to win our little game of course.");
             } else if (clickCount == 4) {
                 mainMenu();
             }
@@ -1193,25 +1247,25 @@ private void playGame(String userChoice) {
     }
 
     public class PlayHandler implements ActionListener {
-        public void actionPerformed(ActionEvent event){
+        public void actionPerformed(ActionEvent event) {
             games();
         }
     }
 
     public class BuyHandler implements ActionListener {
-        public void actionPerformed(ActionEvent event){
+        public void actionPerformed(ActionEvent event) {
             buy();
         }
     }
 
     public class SellHandler implements ActionListener {
-        public void actionPerformed(ActionEvent event){
+        public void actionPerformed(ActionEvent event) {
             sell();
         }
     }
 
     public class QuitHandler implements ActionListener {
-        public void actionPerformed(ActionEvent event){
+        public void actionPerformed(ActionEvent event) {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter("coinsTrack.csv"))) {
                 writer.write(String.valueOf(coins));
             } catch (IOException e) {
@@ -1245,3 +1299,4 @@ private void playGame(String userChoice) {
         }
     }
 }
+
