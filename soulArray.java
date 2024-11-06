@@ -288,7 +288,7 @@ public class soulArray {
 
     }
 
-    public void danceWdevil(){
+    public void danceWdevil(){ //rps
         playerTurn = true;
         hasChosen = false;
         userDmg = 100;
